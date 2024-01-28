@@ -21,15 +21,14 @@ def detect():
     if request.method == 'POST':
         if 'file' in request.files:
             file = request.files['file']
+            file.filename != ''
+            img_stream = file.read()
+            nparr = np.frombuffer(img_stream, np.uint8)
+            img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-            if file.filename != '':
-                img_stream = file.read()
-                nparr = np.frombuffer(img_stream, np.uint8)
-                img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-
-                if img is not None:
-                    people_counter, img_encoded = process_image(img)
-                    return render_template('result.html', img_data=img_encoded, people_counter=people_counter)
+            if img is not None:
+                people_counter, img_encoded = process_image(img)
+                return render_template('result.html', img_data=img_encoded, people_counter=people_counter)
 
     elif request.method == 'GET':
         img_url = request.args.get('img_url')
@@ -40,7 +39,7 @@ def detect():
                 people_counter, img_encoded = process_image(img)
                 return render_template('result.html', img_data=img_encoded, people_counter=people_counter)
 
-    return redirect('/')  # Przekierowanie do strony głównej
+    return redirect('/')
 
 def process_image(img):
     height, width, _ = img.shape
