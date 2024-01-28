@@ -2,47 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detector</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 30px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        form {
-            margin-top: 20px;
-        }
-
-        input[type="file"] {
-            padding: 10px;
-            margin-right: 10px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>Object Detection</title>
 </head>
 <body>
-    <h1>Detector</h1>
+    <h1>Object Detection</h1>
     <form action="/detect" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*">
-        <button type="submit">Detect</button>
+        <label for="file">Choose a file:</label>
+        <input type="file" name="file" id="file" accept=".jpg, .jpeg, .png">
+        <br>
+        <button type="submit">Detect from File</button>
+    </form>
+    <br>
+    <form action="/detect" method="get">
+        <label for="img_url">Enter URL:</label>
+        <input type="text" name="img_url" id="img_url" required>
+        <br>
+        <button type="submit">Detect from URL</button>
     </form>
 </body>
 </html>
