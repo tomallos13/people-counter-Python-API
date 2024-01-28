@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOLO Result</title>
+    <title>Detector</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,24 +15,34 @@
             color: #333;
         }
 
-        img {
-            max-width: 100%;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        form {
             margin-top: 20px;
         }
 
-        .counter {
-            margin-top: 10px;
-            font-size: 18px;
-            color: #555;
+        input[type="file"] {
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <h1>YOLO Result</h1>
-    <img src="data:image/jpeg;base64,{{ img_data }}" alt="Detected Objects" class="result-image">
-    <div class="counter">Liczba wykrytych ludzi: {{ people_counter }}</div>
+    <h1>Detector</h1>
+    <form action="/detect" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*">
+        <button type="submit">Detect</button>
+    </form>
 </body>
 </html>
