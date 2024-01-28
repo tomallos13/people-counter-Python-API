@@ -2,7 +2,7 @@
 
 This is a simple web application for object detection using YOLO (You Only Look Once) model. It allows users to upload an image file or provide a URL for object detection.
 
-![Object Detection]('detector.jpeg')
+![Screenshot](detection_result.png)
 
 ## Getting Started
 
